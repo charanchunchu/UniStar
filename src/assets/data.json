@@ -1,0 +1,96 @@
+{
+  "tableData": {
+    "headers": [
+      "STANDARD",
+      "SIZE (MM2)",
+      "NO OF CORE",
+      "VOLTAGE_GRADE",
+      "CONDUCTOR_MATERIAL",
+      "INSULATION",
+      "INNER SHEATH_MAT",
+      "ARMOUR TYPE",
+      "OUTER SHEATH_MAT",
+      "MAT_CODE"
+    ],
+    "rows": [
+      {
+        "STANDARD": "IS 7098 (Part 2) : 2011",
+        "SIZE (MM2)": "300",
+        "NO OF CORE": "3",
+        "VOLTAGE_GRADE": "6.35/11 kV",
+        "CONDUCTOR_MATERIAL": "AL",
+        "INSULATION": "XLPE",
+        "INNER SHEATH_MAT": "PVC ST2",
+        "ARMOUR TYPE": "GI FLAT STRIP (Method 'a')",
+        "OUTER SHEATH_MAT": "FRLSH PVC ST2",
+        "MAT_CODE": "A2XFY"
+      }
+    ]
+  },  
+  "items": [
+    {
+      "name": "BINDER TAPE 1",
+      "expanded": false,
+      "values": [
+        {
+          "name": "Value",
+          "value": "Value 1.1",
+          "propertyName1": "FIC_DIA Value 1",
+          "propertyName2": "MFG_DIA Value 2",
+          "propertyName3": "AREA Value 3",
+          "propertyName4": "MATERIAL_GRADE Value 4",
+          "propertyName5": "DENSITY Value 5",
+          "propertyName6": "Stage6Value 6"
+        }
+      ]
+    },
+    {
+      "name": "BINDER TAPE 2",
+      "expanded": false,
+      "values": [
+        {
+          "name": "CONDUCTOR",
+          "value": "Value 1.2",
+          "propertyName1": "FIC_DIA Value 1",
+          "propertyName2": "MFG_DIA Value 2",
+          "propertyName3": "AREA Value 3",
+          "propertyName4": "MATERIAL_GRADE Value 4",
+          "propertyName5": "DENSITY Value 5",
+          "propertyName6": "Stage6Value 6"
+        }
+      ]
+    },
+    {
+      "name": "BINDER TAPE 3",
+      "expanded": false,
+      "values": [
+        {
+          "name": "CONDUCTOR",
+          "value": "Value 1.3",
+          "propertyName1": "FIC_DIA Value 1",
+          "propertyName2": "MFG_DIA Value 2",
+          "propertyName3": "AREA Value 3",
+          "propertyName4": "MATERIAL_GRADE Value 4",
+          "propertyName5": "DENSITY Value 5",
+          "propertyName6": "Stage6Value 6"
+        }
+      ]
+    },
+    {
+      "name": "BINDER TAPE 4",
+      "expanded": false,
+      "values": [
+        {
+          "name": "CONDUCTOR",
+          "value": "Value 1.4",
+          "propertyName1": "FIC_DIA Value 1",
+          "propertyName2": "MFG_DIA Value 2",
+          "propertyName3": "AREA Value 3",
+          "propertyName4": "MATERIAL_GRADE Value 4",
+          "propertyName5": "DENSITY Value 5",
+          "propertyName6": "Stage6Value 6"
+        }
+      ]
+    }
+  ]
+}

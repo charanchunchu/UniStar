@@ -6,30 +6,12 @@
         <table class="table table-bordered mt-4">
           <thead class="thead-light">
             <tr>
-              <th class="primary">STANDARD</th>
-              <th>SIZE (MM2)</th>
-              <th>NO OF CORE</th>
-              <th>VOLTAGE_GRADE</th>
-              <th>CONDUCTOR_MATERIAL</th>
-              <th>INSULATION</th>
-              <th>INNER SHEATH_MAT</th>
-              <th>ARMOUR TYPE</th>
-              <th>OUTER SHEATH_MAT</th>
-              <th>MAT_CODE</th>
+              <th *ngFor="let header of tableData.headers">{{ header }}</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="primary">IS 7098 (Part 2) : 2011</td>
-              <td>300</td>
-              <td>3</td>
-              <td>6.35/11 kV</td>
-              <td>AL</td>
-              <td>XLPE</td>
-              <td>PVC ST2</td>
-              <td>GI FLAT STRIP (Method 'a')</td>
-              <td>FRLSH PVC ST2</td>
-              <td>A2XFY</td>
+            <tr *ngFor="let row of tableData.rows">
+              <td *ngFor="let header of tableData.headers">{{ row[header] }}</td>
             </tr>
           </tbody>
         </table>
@@ -37,88 +19,34 @@
     </div>
   </div>
 
-  <div class="row mt-3">
-    <div class="col-12">
-      <div class="table-container">
-        <table class="table table-sm table-bordered">
-          <thead>
-            <tr>
-              <th class="empty-th"></th>
-              <th>FIC DIA</th>
-              <th>MFG DIA (MM)</th>
-              <th>AREA (MM2)</th>
-              <th>MATERIAL GRADE</th>
-              <th>DENSITY (G/CC)</th>
-              <th>Stage 6</th>
-              <th>CONTENT (KG/KM)</th>
-            </tr>
-          </thead>
-        </table>
-      </div>
-
-      <!-- Accordion -->
+  <div class="container">
+  <div class="row mt-3 p-5">
+    <div class="col-11">
       <ul id="accordion" class="accordion">
-        <li>
-          <div class="link">BINDER TAPE 1<i class="fa-solid fa-plus"></i></div>
-          <ul class="submenu">
-            <li><a href="#">MATERIAL</a></li>
-            <li><a href="#">TYPE OF CONDUCTOR</a></li>
-            <li><a href="#">FORM/SHAPE OF CONDUCTOR</a></li>
-            <li><a href="#">CLASS</a></li>
-            <li><a href="#">D.C RESISTANCE AT 20^C (OHM/KM)</a></li>
-            <li><a href="#">NUMBER OF WIRES (NOM)</a></li>
-            <li><a href="#">NUMBER OF WIRES AS PER IS <br> 8130/IEC 60228 (MIN)</a></li>
-            <li><a href="#">NOM DIA OF WIRE (MM)</a></li>
-            <li><a href="#">WEIGHT OF CONDUCTOR PER CORE</a></li>
-            <li><a href="#">E.T.C (XXXX)</a></li>
-          </ul>
-        </li>
-        <li>
-          <div class="link">BINDER TAPE 2<i class="fa-solid fa-plus"></i></div>
-          <ul class="submenu">
-            <li><a href="#">MATERIAL</a></li>
-            <li><a href="#">TYPE OF CONDUCTOR</a></li>
-            <li><a href="#">FORM/SHAPE OF CONDUCTOR</a></li>
-            <li><a href="#">CLASS</a></li>
-            <li><a href="#">D.C RESISTANCE AT 20^C (OHM/KM)</a></li>
-            <li><a href="#">NUMBER OF WIRES (NOM)</a></li>
-            <li><a href="#">NUMBER OF WIRES AS PER IS <br> 8130/IEC 60228 (MIN)</a></li>
-            <li><a href="#">NOM DIA OF WIRE (MM)</a></li>
-            <li><a href="#">WEIGHT OF CONDUCTOR PER CORE</a></li>
-            <li><a href="#">E.T.C (XXXX)</a></li>
-          </ul>
-        </li>
-        <li>
-          <div class="link">BINDER TAPE 3<i class="fa-solid fa-plus"></i></div>
-          <ul class="submenu">
-            <li><a href="#">MATERIAL</a></li>
-            <li><a href="#">TYPE OF CONDUCTOR</a></li>
-            <li><a href="#">FORM/SHAPE OF CONDUCTOR</a></li>
-            <li><a href="#">CLASS</a></li>
-            <li><a href="#">D.C RESISTANCE AT 20^C (OHM/KM)</a></li>
-            <li><a href="#">NUMBER OF WIRES (NOM)</a></li>
-            <li><a href="#">NUMBER OF WIRES AS PER IS <br> 8130/IEC 60228 (MIN)</a></li>
-            <li><a href="#">NOM DIA OF WIRE (MM)</a></li>
-            <li><a href="#">WEIGHT OF CONDUCTOR PER CORE</a></li>
-            <li><a href="#">E.T.C (XXXX)</a></li>
-          </ul>
-        </li>
-        <li>
-          <div class="link">BINDER TAPE 4<i class="fa-solid fa-plus"></i></div>
-          <ul class="submenu">
-            <li><a href="#">MATERIAL</a></li>
-            <li><a href="#">TYPE OF CONDUCTOR</a></li>
-            <li><a href="#">FORM/SHAPE OF CONDUCTOR</a></li>
-            <li><a href="#">CLASS</a></li>
-            <li><a href="#">D.C RESISTANCE AT 20^C (OHM/KM)</a></li>
-            <li><a href="#">NUMBER OF WIRES (NOM)</a></li>
-            <li><a href="#">NUMBER OF WIRES AS PER IS <br> 8130/IEC 60228 (MIN)</a></li>
-            <li><a href="#">NOM DIA OF WIRE (MM)</a></li>
-            <li><a href="#">WEIGHT OF CONDUCTOR PER CORE</a></li>
-            <li><a href="#">E.T.C (XXXX)</a></li>
-          </ul>
+        <li *ngFor="let item of data">
+          <div (click)="toggleItem(item)" class="link">
+            {{ item.name }}
+            <i class="fa" [ngClass]="{'fa-plus': !item.expanded, 'fa-minus': item.expanded}" aria-hidden="true"></i>
+          </div>
+          <div *ngIf="item.expanded" class="accordion-content">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th *ngFor="let key of getKeys(item.values[0])">{{ key }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let value of item.values">
+                  <td *ngFor="let pair of getKeyValuePairs(value)">
+                    {{ pair.value }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </li>
       </ul>
     </div>
   </div>
+</div>
 </div>

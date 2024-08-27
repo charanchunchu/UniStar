@@ -1,4 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from "../service/data.service";
+
+interface ItemValue {
+  name: string;
+  value: string;
+  [key: string]: string;
+}
+
+export interface DataItem {
+  name: string;
+  expanded: boolean;
+  values: ItemValue[];
+}
 
 @Component({
   selector: 'app-cable-design',
@@ -6,28 +19,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cable-design.component.scss']
 })
 export class CableDesignComponent implements OnInit {
-  constructor() { }
+  data: DataItem[] = [];
+  tableData: any = {};
+
+  constructor(private dataService: DataService) {}
+
   ngOnInit(): void {
-    this.initAccordion();
-  }
-  initAccordion(): void {
-    const accordionItems = document.querySelectorAll('.accordion .link');
-    accordionItems.forEach(item => {
-      item.addEventListener('click', (e) => {
-        const nextElement = item.nextElementSibling as HTMLElement;
-        const parentElement = item.parentElement as HTMLElement;
-        nextElement?.classList.toggle('open');
-        parentElement?.classList.toggle('open');
-        if (!parentElement?.classList.contains('multiple')) {
-          const submenus = document.querySelectorAll('.accordion .submenu');
-          submenus.forEach(submenu => {
-            if (submenu !== nextElement) {
-              submenu.classList.remove('open');
-              submenu.parentElement?.classList.remove('open');
-            }
-          });
-        }
-      });
+    this.dataService.getData().subscribe((data: any) => {
+      this.tableData = data.tableData;
+      this.data = data.items;
     });
+  }
+
+  toggleItem(item: DataItem): void {
+    item.expanded = !item.expanded;
+  }
+
+  getKeys(itemValue: ItemValue): string[] {
+    return Object.keys(itemValue);
+  }
+
+  getKeyValuePairs(itemValue: ItemValue): { key: string, value: string }[] {
+    return Object.keys(itemValue).map(key => ({ key, value: itemValue[key] }));
   }
 }

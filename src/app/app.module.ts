@@ -9,6 +9,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterLink    
+    RouterLink,
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
